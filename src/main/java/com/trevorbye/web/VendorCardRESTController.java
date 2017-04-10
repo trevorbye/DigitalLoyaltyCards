@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-public class RESTController {
+public class VendorCardRESTController {
 
     @Autowired
     private PunchCardService cardService;
