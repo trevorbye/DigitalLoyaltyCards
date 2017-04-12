@@ -9,4 +9,5 @@ public interface UserCardJoinService {
     void deleteAll();
     UserCardJoinEntity deleteUserAndCardSubscriptionCombination(long userId, long cardId);
     List<UserCardJoinEntity> getAllSubscriptionsForUser(long userId);
+    UserCardJoinEntity getUserAndCardSubscription(long userId, long cardId);
 }

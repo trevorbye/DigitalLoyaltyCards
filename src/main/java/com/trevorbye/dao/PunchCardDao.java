@@ -17,8 +17,10 @@ public interface PunchCardDao extends CrudRepository<PunchCardEntity, Long> {
 
     List<PunchCardEntity> findAllByCompanyId(long companyId);
 
+    List<PunchCardEntity> findAll();
+
     @Transactional
-    PunchCardEntity deleteByCardId(long cardId);
+    void delete(PunchCardEntity entity);
 
     void deleteAll();
 

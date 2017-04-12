@@ -23,11 +23,9 @@ public class UserCardJoinEntity {
     @NotNull
     private String username;
 
-    @NotNull
     @Max(10)
     private int userPunchCount;
 
-    @NotNull
     private Boolean isCardComplete;
 
     public UserCardJoinEntity() {

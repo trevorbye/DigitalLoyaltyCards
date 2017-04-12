@@ -32,4 +32,9 @@ public class UserCardJoinServiceImpl implements UserCardJoinService {
     public List<UserCardJoinEntity> getAllSubscriptionsForUser(long userId) {
         return dao.findAllByUserId(userId);
     }
+
+    @Override
+    public UserCardJoinEntity getUserAndCardSubscription(long userId, long cardId) {
+        return dao.findByUserIdAndCardId(userId, cardId);
+    }
 }

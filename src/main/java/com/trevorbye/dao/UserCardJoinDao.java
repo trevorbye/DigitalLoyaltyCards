@@ -18,4 +18,5 @@ public interface UserCardJoinDao extends CrudRepository<UserCardJoinEntity, Long
 
     List<UserCardJoinEntity> findAllByUserId(long userId);
 
+    UserCardJoinEntity findByUserIdAndCardId(long userId, long cardId);
 }

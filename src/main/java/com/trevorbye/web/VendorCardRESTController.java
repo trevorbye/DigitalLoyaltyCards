@@ -13,6 +13,10 @@ import java.util.List;
 
 @RestController
 public class VendorCardRESTController {
+    /*
+    Primary controller for vendor operations. Creating new cards, fetching all cards for profile page,
+    and deleting cards.
+    * */
 
     @Autowired
     private PunchCardService cardService;
@@ -26,7 +30,7 @@ public class VendorCardRESTController {
     public ResponseEntity<?> getCard(@RequestParam long companyId) {
         List<PunchCardEntity> entities = cardService.selectAllByCompanyId(companyId);
 
-        if (entities == null) {
+        if (entities.isEmpty()) {
             return new ResponseEntity<>(new ErrorResponseObj("No cards for this companyId."), HttpStatus.BAD_REQUEST);
         } else {
             return new ResponseEntity<>(entities, HttpStatus.OK);
@@ -35,14 +39,17 @@ public class VendorCardRESTController {
 
     @RequestMapping("/deleteCardById")
     public ResponseEntity<?> deleteCard(@RequestParam long cardId) {
-        PunchCardEntity entity = cardService.deleteById(cardId);
+        PunchCardEntity entity = cardService.selectById(cardId);
 
         if (entity == null) {
             return new ResponseEntity<>(new ErrorResponseObj("Card does not exist."), HttpStatus.BAD_REQUEST);
         } else {
+            cardService.deleteEntity(entity);
             return new ResponseEntity<>(entity, HttpStatus.OK);
         }
     }
+
+    //TODO add logic to increment punch count and mark a UserCardJoinEntity as "complete", but restrict these operations
 
 
 }

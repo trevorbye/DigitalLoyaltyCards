@@ -29,12 +29,17 @@ public class PunchCardServiceImpl implements PunchCardService {
     }
 
     @Override
-    public PunchCardEntity deleteById(long cardId) {
-        return punchCardDao.deleteByCardId(cardId);
+    public void deleteEntity(PunchCardEntity entity) {
+        punchCardDao.delete(entity);
     }
 
     @Override
     public void deleteAll() {
         punchCardDao.deleteAll();
+    }
+
+    @Override
+    public List<PunchCardEntity> findAll() {
+        return punchCardDao.findAll();
     }
 }

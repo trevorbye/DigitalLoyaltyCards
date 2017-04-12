@@ -8,6 +8,7 @@ public interface PunchCardService {
     PunchCardEntity createOrUpdate(PunchCardEntity entity);
     PunchCardEntity selectById(long cardId);
     List<PunchCardEntity> selectAllByCompanyId(long companyId);
-    PunchCardEntity deleteById(long cardId);
+    void deleteEntity(PunchCardEntity entity);
     void deleteAll();
+    List<PunchCardEntity> findAll();
 }
