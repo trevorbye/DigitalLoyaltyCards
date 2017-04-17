@@ -29,6 +29,9 @@ dependencies {
 	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.0.9.Final'
 	compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.3.4.Final'
 
+    //spring security
+	compile('org.springframework.boot:spring-boot-starter-security')
+
 	compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.10.3.RELEASE'
 	compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
 	compile 'org.apache.tomcat:tomcat-dbcp:8.0.32'

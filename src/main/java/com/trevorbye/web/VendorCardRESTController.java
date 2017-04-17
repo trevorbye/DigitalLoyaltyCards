@@ -49,7 +49,7 @@ public class VendorCardRESTController {
         }
     }
 
-    //TODO add logic to increment punch count and mark a UserCardJoinEntity as "complete", but restrict these operations
+    //TODO add logic to increment punch count and mark a CustomerCardJoinEntity as "complete", but restrict these operations
 
 
 }

@@ -8,7 +8,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class UserCardJoinEntity {
+public class CustomerCardJoinEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +28,7 @@ public class UserCardJoinEntity {
 
     private Boolean isCardComplete;
 
-    public UserCardJoinEntity() {
+    public CustomerCardJoinEntity() {
     }
 
     public long getId() {

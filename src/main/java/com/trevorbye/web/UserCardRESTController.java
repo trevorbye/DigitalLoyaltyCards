@@ -1,8 +1,8 @@
 package com.trevorbye.web;
 
 import com.trevorbye.POJO.ErrorResponseObj;
-import com.trevorbye.model.UserCardJoinEntity;
-import com.trevorbye.service.UserCardJoinService;
+import com.trevorbye.model.CustomerCardJoinEntity;
+import com.trevorbye.service.CustomerCardJoinServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +20,10 @@ public class UserCardRESTController {
     * */
 
     @Autowired
-    private UserCardJoinService service;
+    private CustomerCardJoinServiceImpl service;
 
     @RequestMapping(method = RequestMethod.POST, path = "/subscribeToCard")
-    public ResponseEntity<?> subscribeToCard(@Valid @RequestBody UserCardJoinEntity payload) {
+    public ResponseEntity<?> subscribeToCard(@Valid @RequestBody CustomerCardJoinEntity payload) {
 
         //prevent user from creating the same card from the same company more than once
         if (service.getUserAndCardSubscription(payload.getUserId(), payload.getCardId()) == null) {
@@ -37,7 +37,7 @@ public class UserCardRESTController {
 
     @RequestMapping("/deleteCardSubscription")
     public ResponseEntity<?> deleteCard(@RequestParam long userId, @RequestParam long cardId) {
-        UserCardJoinEntity entity = service.deleteUserAndCardSubscriptionCombination(userId, cardId);
+        CustomerCardJoinEntity entity = service.deleteUserAndCardSubscriptionCombination(userId, cardId);
 
         if (entity == null) {
             return new ResponseEntity<>(new ErrorResponseObj("Card/User combination does not exist."), HttpStatus.BAD_REQUEST);
@@ -48,7 +48,7 @@ public class UserCardRESTController {
 
     @RequestMapping("/getAllSubscriptionsForUser")
     public ResponseEntity<?> getAllSubscriptionsForUser(@RequestParam long userId) {
-        List<UserCardJoinEntity> entities = service.getAllSubscriptionsForUser(userId);
+        List<CustomerCardJoinEntity> entities = service.getAllSubscriptionsForUser(userId);
 
         return new ResponseEntity<>(entities, HttpStatus.OK);
     }

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
+import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -98,14 +99,30 @@ public class VendorControllerIntegrationTests {
                 .build();
 
         RestAssured.given()
-                .contentType(io.restassured.http.ContentType.JSON)
+                .contentType(JSON)
                 .body(entity)
                 .when()
                     .post("/createCard")
                 .then()
                     .statusCode(200)
-                    .contentType(io.restassured.http.ContentType.JSON);
+                    .contentType(JSON);
 
     }
 
+    @Test
+    public void badCreateCardRequest() throws Exception {
+        PunchCardEntity entity = new PunchCardEntityBuilder().companyId(200)
+                .CssColorAndStyle(".test {color: black}").CssPositioning(".test {position: relative}")
+                .title("Start your punch card!").numberOfPunches(5).inclusiveDate(true).date(new Date(new Date().getTime()))
+                .build();
+
+        RestAssured.given()
+                .contentType(JSON)
+                .body(entity)
+                .when()
+                    .post("/createCard")
+                .then()
+                    .statusCode(400)
+                    .contentType(JSON);
+    }
 }
